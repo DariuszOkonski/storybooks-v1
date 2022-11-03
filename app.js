@@ -1,4 +1,8 @@
 const express = require("express");
+// import { engine } from "express-handlebars";
+
+// const engine = require("express-handlebars");
+const exphbs = require("express-handlebars");
 const mongoose = require("mongoose");
 const passport = require("passport");
 const keys = require("./config/keys");
@@ -12,6 +16,7 @@ require("./models/user");
 require("./config/passport")(passport);
 
 // load routes
+const index = require("./routes/index");
 const auth = require("./routes/auth");
 
 // map global promises
@@ -24,6 +29,10 @@ mongoose
   .catch((err) => console.log(err.message));
 
 const app = express();
+
+// middleware
+app.set("view engine", "handlebars");
+app.engine("handlebars", exphbs.engine());
 
 app.use(cookieParser());
 // express-session middleware
@@ -44,11 +53,8 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get("/", (req, res) => {
-  res.send("It Works, hello world");
-});
-
 // use routes
+app.use("/", index);
 app.use("/auth", auth);
 
 const port = process.env.PORT || 5000;

@@ -16,3 +16,15 @@ https://www.npmjs.com/package/express-session
 
 cookie-parser:
 https://www.npmjs.com/package/cookie-parser
+
+express-handlebars:
+https://www.npmjs.com/package/express-handlebars
+
+materializecss:
+https://materializecss.com/
+
+jquery cdn, to make materialize work:
+https://releases.jquery.com/
+
+fontawesome:
+https://www.bootstrapcdn.com/fontawesome/
