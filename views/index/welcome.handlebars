@@ -3,7 +3,9 @@
 <p>Post stories from the best and worst of your life and choose for them to be
   read by the world or completley private as your own personal diary</p>
 
-<a class="btn red darken-1" href="/auth/google">
-  <i class="fa-brands fa-google left"></i>
-  Login With Google
-</a>
+{{#if user}}{{else}}
+  <a class="btn red darken-1" href="/auth/google">
+    <i class="fa fa-google left" aria-hidden="true"></i>
+    Login With Google
+  </a>
+{{/if}}
