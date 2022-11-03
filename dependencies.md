@@ -10,3 +10,9 @@ https://www.npmjs.com/package/passport
 passport-google-oauth20:
 https://console.cloud.google.com/
 https://www.npmjs.com/package/passport-google-oauth20
+
+express-session:
+https://www.npmjs.com/package/express-session
+
+cookie-parser:
+https://www.npmjs.com/package/cookie-parser
