@@ -8,15 +8,21 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
     />
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/style.css">
     <title>StoryBooks</title>
   </head>
   <body>
     {{> header}}
+    {{#if user}}
+      {{> add-btn}}
+    {{/if}}
     <main>
       <div class="container">
         {{{body}}}
       </div>
     </main>
+    {{> footer}}
     <script
       src="https://code.jquery.com/jquery-3.6.1.js"
       integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="

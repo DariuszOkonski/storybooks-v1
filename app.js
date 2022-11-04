@@ -1,8 +1,10 @@
 const express = require("express");
-// import { engine } from "express-handlebars";
-
-// const engine = require("express-handlebars");
+const path = require("path");
+const Handlebars = require("handlebars");
 const exphbs = require("express-handlebars");
+const {
+  allowInsecurePrototypeAccess,
+} = require("@handlebars/allow-prototype-access");
 const mongoose = require("mongoose");
 const passport = require("passport");
 const keys = require("./config/keys");
@@ -18,6 +20,7 @@ require("./config/passport")(passport);
 // load routes
 const index = require("./routes/index");
 const auth = require("./routes/auth");
+const stories = require("./routes/stories");
 
 // map global promises
 mongoose.Promise = global.Promise;
@@ -32,7 +35,12 @@ const app = express();
 
 // middleware
 app.set("view engine", "handlebars");
-app.engine("handlebars", exphbs.engine());
+app.engine(
+  "handlebars",
+  exphbs.engine({
+    handlebars: allowInsecurePrototypeAccess(Handlebars),
+  })
+);
 
 app.use(cookieParser());
 // express-session middleware
@@ -53,9 +61,13 @@ app.use((req, res, next) => {
   next();
 });
 
+//set static folder
+app.use(express.static(path.join(__dirname, "public")));
+
 // use routes
 app.use("/", index);
 app.use("/auth", auth);
+app.use("/stories", stories);
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => {

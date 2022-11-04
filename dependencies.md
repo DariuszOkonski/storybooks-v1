@@ -19,6 +19,8 @@ https://www.npmjs.com/package/cookie-parser
 
 express-handlebars:
 https://www.npmjs.com/package/express-handlebars
+fix problem with handlebars object property
+https://github.com/handlebars-lang/handlebars.js/issues/1648#issuecomment-582241258
 
 materializecss:
 https://materializecss.com/
