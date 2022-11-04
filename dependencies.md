@@ -30,3 +30,6 @@ https://releases.jquery.com/
 
 fontawesome:
 https://www.bootstrapcdn.com/fontawesome/
+
+ckeditor:
+https://cdn.ckeditor.com/
