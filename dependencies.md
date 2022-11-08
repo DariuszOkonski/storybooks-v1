@@ -33,3 +33,6 @@ https://www.bootstrapcdn.com/fontawesome/
 
 ckeditor:
 https://cdn.ckeditor.com/
+
+body-parser:
+https://www.npmjs.com/package/body-parser

@@ -5,14 +5,19 @@ const exphbs = require("express-handlebars");
 const {
   allowInsecurePrototypeAccess,
 } = require("@handlebars/allow-prototype-access");
+const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const passport = require("passport");
-const keys = require("./config/keys");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
+const keys = require("./config/keys");
 
-// load User model
+// handlebars helpers
+const { truncate, stripTags, truncateAndStripTags } = require("./helpers/hbs");
+
+// Load Models
 require("./models/user");
+require("./models/story");
 
 // passport config
 require("./config/passport")(passport);
@@ -33,11 +38,20 @@ mongoose
 
 const app = express();
 
+//body-parser
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
 // middleware
 app.set("view engine", "handlebars");
 app.engine(
   "handlebars",
   exphbs.engine({
+    helpers: {
+      truncate: truncate,
+      stripTags: stripTags,
+      truncateAndStripTags: truncateAndStripTags,
+    },
     handlebars: allowInsecurePrototypeAccess(Handlebars),
   })
 );
