@@ -36,3 +36,9 @@ https://cdn.ckeditor.com/
 
 body-parser:
 https://www.npmjs.com/package/body-parser
+
+moment:
+https://www.npmjs.com/package/moment
+
+method-override:
+https://www.npmjs.com/package/method-override

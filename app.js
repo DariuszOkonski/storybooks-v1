@@ -11,9 +11,16 @@ const passport = require("passport");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const keys = require("./config/keys");
+const methodOverride = require("method-override");
 
 // handlebars helpers
-const { truncate, stripTags, truncateAndStripTags } = require("./helpers/hbs");
+const {
+  truncate,
+  stripTags,
+  truncateAndStripTags,
+  formatDate,
+  select,
+} = require("./helpers/hbs");
 
 // Load Models
 require("./models/user");
@@ -42,6 +49,9 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+//method override
+app.use(methodOverride("_method"));
+
 // middleware
 app.set("view engine", "handlebars");
 app.engine(
@@ -51,6 +61,8 @@ app.engine(
       truncate: truncate,
       stripTags: stripTags,
       truncateAndStripTags: truncateAndStripTags,
+      formatDate: formatDate,
+      select: select,
     },
     handlebars: allowInsecurePrototypeAccess(Handlebars),
   })
