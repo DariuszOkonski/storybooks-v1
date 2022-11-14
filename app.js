@@ -20,6 +20,7 @@ const {
   truncateAndStripTags,
   formatDate,
   select,
+  editIcon,
 } = require("./helpers/hbs");
 
 // Load Models
@@ -63,6 +64,7 @@ app.engine(
       truncateAndStripTags: truncateAndStripTags,
       formatDate: formatDate,
       select: select,
+      editIcon: editIcon,
     },
     handlebars: allowInsecurePrototypeAccess(Handlebars),
   })

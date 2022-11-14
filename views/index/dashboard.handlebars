@@ -13,7 +13,7 @@
     <tbody>
       {{#each stories}}
         <tr>
-          <td><a href="/stories/show">{{title}}</a></td>
+          <td><a href="/stories/show/{{id}}">{{title}}</a></td>
           <td>{{formatDate data "MMMM Do YYYY"}}</td>
           <td><span class="dash-status">{{status}}</span></td>
           <td>
@@ -21,7 +21,12 @@
                 class="fa fa-pencil"
               ></i>
               Edit</a>
-            <form action="/stories/{{id}}" method="post" id="delete-form">
+            <form
+              action="/stories/{{id}}?_method=DELETE"
+              method="post"
+              id="delete-form"
+            >
+              <input type="hidden" name="_method" value="DELETE" />
               <button type="submit" class="btn red"><i class="fa fa-remove"></i>
                 Delete</button>
             </form>
